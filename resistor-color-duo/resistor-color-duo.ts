@@ -28,7 +28,6 @@ throw new Error('At least two colors need to be present');
     let outstring: string = "";
 
     for(let i: number = 0; i < this.colors.length; i++){
-      console.log("current color: "+this.colors[i]);
       switch(this.colors[i] ){
                 
           case "black": 
@@ -73,8 +72,6 @@ throw new Error('At least two colors need to be present');
 
       }
     }
-    console.log(outstring);
-    console.log(Number(outstring));
     return Number(outstring);
 
   
