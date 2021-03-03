@@ -54,10 +54,10 @@ public minus(minuteIn: number): string {
     return this.toString();
 }
 
-public equals(clockIn: Clock){
+public equals(clockIn: Clock): boolean{
     return this.toString() == clockIn.toString();
 }
-
+ 
 
 }
 export default Clock;
