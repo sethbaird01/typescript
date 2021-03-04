@@ -9,19 +9,19 @@ describe('BinarySearch', () => {
     const invalidBinarySearch = new BinarySearch(unsortedArray)
     const validBinarySearch = new BinarySearch(sortedArray)
 
-    expect(typeof invalidBinarySearch.array).toEqual('undefined')
+    expect(invalidBinarySearch.array).toBeUndefined()
     expect(Array.isArray(validBinarySearch.array)).toEqual(true)
   })
 
-  xit('should find the correct index of an included value', () => {
+  it('should find the correct index of an included value', () => {
     expect(new BinarySearch(sortedArray).indexOf(3)).toEqual(2)
   })
 
-  xit('should search the middle of the array', () => {
+  it('should search the middle of the array', () => {
     expect(new BinarySearch(sortedArrayOfOddLength).indexOf(2)).toEqual(3)
   })
 
-  xit('should return -1 for a value not in the array', () => {
+  it('should return -1 for a value not in the array', () => {
     expect(new BinarySearch(sortedArray).indexOf(10)).toEqual(-1)
   })
 })
