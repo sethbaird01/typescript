@@ -8,7 +8,7 @@ describe('single line grids', () => {
     expect(wordSearch instanceof WordSearch).toEqual(true)
   })
 
-  xtest('can accept a target search word', () => {
+  test('can accept a target search word', () => {
     const grid = ['jefblpepre']
     const wordSearch = new WordSearch(grid)
 
