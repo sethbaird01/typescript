@@ -6,38 +6,28 @@ export default class WordSearch {
     this.arr = arrIn;
   }
 
-  public find(words: string[]): [Record<string, [Record<string, number[]>]>] {
+  public find(words: string[]): Record<string, Record<string, number[]>> {
     const verticalSearchStrings: string[] = this.extractVerticals(this.arr)
     const horizontalSearchStrings: string[] = this.extractHorizontals(this.arr)
     //const diagonalSearchStrings: string[] = this.extractDiagonals(this.arr)
 
 
-    for(let i = 0; i < verticalSearchStrings.length;i++){
-      for(let a  = 0; a < horizontalSearchStrings.length;a++){
-      if(verticalSearchStrings[i].length != horizontalSearchStrings[a].length){
-        //comparing all linear search strings to make sure the functions aren't broken
-        throw new Error("Bad function");
-        }
-      }
-    }
-
        //finding horizontals
        let foundInfo: any[][] = [];
        //foundInfo format: [word] [searchStrIndex] [startIndex] [endIndex]
-       let recordOut: [Record<string, [Record<string, number[]>]>] = [{}];
+       let recordOut: Record<string, Record<string, number[]>> = {};
 
       for(let searchStrIndex = 0; searchStrIndex<horizontalSearchStrings.length;searchStrIndex++){
+        const currSearchStrIndex: number = (searchStrIndex >= (horizontalSearchStrings.length/2)) ? (Math.floor(searchStrIndex/2)) : searchStrIndex;
         const currHSearchString: string = horizontalSearchStrings[searchStrIndex];
        for(let wordIndex = 0; wordIndex<words.length;wordIndex++){
          const currWord: string = words[wordIndex];
-        for(let phraseIndex = 0; phraseIndex<(currHSearchString.length-currWord.length);phraseIndex++){
-          const currPhrase: string = currHSearchString.substring(phraseIndex, (phraseIndex+currWord.length-1))
+        for(let phraseIndex = 0; phraseIndex<(currHSearchString.length-currWord.length)+1;phraseIndex++){
+          const currPhrase: string = currHSearchString.substring(phraseIndex, (phraseIndex+currWord.length));
           if(currPhrase == currWord){
-            foundInfo[foundInfo.length] = [currWord, searchStrIndex, phraseIndex, (phraseIndex+(currWord.length - 1))];
-            console.log('word found: '+foundInfo[foundInfo.length-1]);
-            const subRecord: [Record<string, number[]>] = [{"start": [searchStrIndex, phraseIndex]}, {"end": [searchStrIndex,(phraseIndex+(currWord.length - 1))]}]
-            recordOut[recordOut.length] = {currWord: subRecord}
-            //TODO figure out records
+            //? ((currHSearchString.length-currWord.length)+1)-(Math.floor(phraseIndex/2))
+            const tempphraseIndex: number = (phraseIndex >= ((currPhrase.length)/2)) ? currHSearchString.length-currPhrase.length : phraseIndex+1;
+            recordOut[currWord] = {"start": [currSearchStrIndex+1, tempphraseIndex], "end": [currSearchStrIndex+1,(tempphraseIndex-1+currWord.length)]}
           }
         }
        }
