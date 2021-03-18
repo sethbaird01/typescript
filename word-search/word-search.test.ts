@@ -255,7 +255,7 @@ describe('different directions', () => {
 })
 
 describe('vertical directions', () => {
-  xtest('should locate words written top to bottom', () => {
+  test('should locate words written top to bottom', () => {
     const grid = [
       'jefblpepre',
       'camdcimgtc',
@@ -287,7 +287,7 @@ describe('vertical directions', () => {
       expectedResults
     )
   })
-  xtest('should locate words written bottom to top', () => {
+  test('should locate words written bottom to top', () => {
     const grid = [
       'jefblpepre',
       'camdcimgtc',

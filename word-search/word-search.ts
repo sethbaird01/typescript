@@ -1,4 +1,3 @@
-import { stringify } from "querystring";
 
 export default class WordSearch {
   public arr: string[] = [];
@@ -13,7 +12,6 @@ export default class WordSearch {
     let recordOut: Record<string, Record<string, number[]>> = {};
 
        //finding horizontals
-
       for(let searchStrIndex = 0; searchStrIndex<horizontalSearchStrings.length;searchStrIndex++){
         const currSearchStrIndex: number = (searchStrIndex >= (horizontalSearchStrings.length/2)) ? (Math.floor(searchStrIndex/2)) : searchStrIndex;
         const currHSearchString: string = horizontalSearchStrings[searchStrIndex];
@@ -40,32 +38,27 @@ export default class WordSearch {
       //done finding horizontals
 
         //finding verticals
-    //   if(this.longestElement(words).length <= this.arr.length){
-    //     for(let searchStrIndex = 0; searchStrIndex<verticalSearchStrings.length;searchStrIndex++){
-    //     const currSearchStrIndex: number = (searchStrIndex >= (verticalSearchStrings.length/2)) ? (Math.floor(searchStrIndex/2)) : searchStrIndex;
-    //     const currVSearchString: string = verticalSearchStrings[searchStrIndex];
-    //     for(let wordIndex = 0; wordIndex<words.length;wordIndex++){
-    //       const currWord: string = words[wordIndex];
-    //     for(let phraseIndex = 0; phraseIndex<(currVSearchString.length-currWord.length)+1;phraseIndex++){
-    //       //phraseIndex is the starting index of substring containing currentPhrase
-    //       //in other words, the currentPhrase can be defined as the following
-    //       const currPhrase: string = currVSearchString.substring(phraseIndex, (phraseIndex+currWord.length));
-    //       if(currPhrase == currWord){
-    //         if(!(searchStrIndex >= ((verticalSearchStrings.length)/2))){
-    //           //word is not reversed
-    //           console.log("reversed phrase: "+ currPhrase);
-    //           recordOut[currWord] = {"start": [currSearchStrIndex+1, phraseIndex+1], "end": [currSearchStrIndex+1,(phraseIndex+currWord.length)]};
-    //         }
-    //         else{
-    //           recordOut[currWord] = {"start": [(Math.ceil(currSearchStrIndex/2))+1, currVSearchString.length-(currVSearchString.length-currPhrase.length)], "end": [(Math.ceil(currSearchStrIndex/2))+1, ((currVSearchString.length-(phraseIndex+currPhrase.length))+1)]}
-    //           //                                                                             10             -    (     10          -         6          ) = 4                                   (       10            - (     4     +     6      )) + 1 =  1                                                        
-    //           //this took more hours than i'd like to admit
-    //         }
-    //       }
-    //     }
-    //     }
-    //   }
-    // }
+        for(let searchStrIndex = 0; searchStrIndex<verticalSearchStrings.length;searchStrIndex++){
+        const currSearchStrIndex: number = (searchStrIndex >= (verticalSearchStrings.length/2)) ? (Math.floor(searchStrIndex/2)) : searchStrIndex;
+        const currVSearchString: string = verticalSearchStrings[searchStrIndex];
+        for(let wordIndex = 0; wordIndex<words.length;wordIndex++){
+          const currWord: string = words[wordIndex];
+        for(let phraseIndex = 0; phraseIndex<(currVSearchString.length-currWord.length)+1;phraseIndex++){
+          const currPhrase: string = currVSearchString.substring(phraseIndex, (phraseIndex+currWord.length));
+          if(currPhrase == currWord){
+            if(!(searchStrIndex >= ((verticalSearchStrings.length)/2))){
+              //word is not reversed
+              const startRow: number = (phraseIndex+(currVSearchString.length-currPhrase.length));
+              recordOut[currWord] = {"start": [startRow+1, searchStrIndex+1], "end": [(startRow+currPhrase.length),searchStrIndex+1]};
+            }
+            else{
+              const startRow: number = (currVSearchString.length-(currVSearchString.length-phraseIndex)+1);
+              recordOut[currWord] = {"start": [startRow-1, Math.floor(searchStrIndex/2)], "end": [this.arr.length-(phraseIndex+currPhrase.length)+1,Math.floor(searchStrIndex/2)]};
+            }
+          }
+        }
+       }
+      }
       //done finding verticals
 
 
@@ -83,17 +76,20 @@ export default class WordSearch {
       for(let a = 0; a < arrIn[i].length; a++){
         //a is position in row
         //i is row
-      temp[a] += arrIn[i].charAt(a);
-      if(temp[a] == undefined || temp[a] == ""){
-        temp = temp.splice(a, 1);
-      }
+        if(arrIn[i].charAt(a) != undefined && arrIn[i].charAt(a) != ""){
+          if(temp[a] != undefined){
+            temp[a] += arrIn[i].charAt(a);
+          }else{
+            temp[a] = arrIn[i].charAt(a);
+          }
+        }
       }
     }
 
   const oldTempLen: number = temp.length;
     for(let i = 0; i < oldTempLen; i++){
         if(temp[i] != undefined && temp[i] != ""){
-      temp[i+temp.length] = this.reverseString(temp[i]);
+      temp[i+oldTempLen] = this.reverseString(temp[i]);
 
         }
     }
