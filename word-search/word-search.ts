@@ -6,9 +6,8 @@ export default class WordSearch {
   }
 
   public find(words: string[]): Record<string, Record<string, number[]>> {
-    const verticalSearchStrings: string[] = this.extractVerticals(this.arr)
-    const horizontalSearchStrings: string[] = this.extractHorizontals(this.arr)
-    //const diagonalSearchStrings: string[] = this.extractDiagonals(this.arr)
+    const verticalSearchStrings: string[] = this.extractVerticals(this.arr);
+    const horizontalSearchStrings: string[] = this.extractHorizontals(this.arr);
     let recordOut: Record<string, Record<string, number[]>> = {};
 
        //finding horizontals
@@ -61,6 +60,7 @@ export default class WordSearch {
       }
       //done finding verticals
 
+      //diagonals would go here :(
 
       return recordOut;
   }
@@ -116,8 +116,7 @@ export default class WordSearch {
    * @param string[] - square word grid
    * @returns string[] - all diagonal lines in the grid, including reverse.
    */
-  // public extractDiagonals(arrIn: string[]): string[]{
-  // }
+
 
   public  reverseString(inStr: string): string {
 //hope this works

@@ -324,219 +324,219 @@ describe('vertical directions', () => {
       wordSearch.find(['elixir', 'clojure', 'ecmascript', 'rust'])
     ).toEqual(expectedResults)
   })
-  xtest('should locate words written top left to bottom right', () => {
-    const grid = [
-      'jefblpepre',
-      'camdcimgtc',
-      'oivokprjsm',
-      'pbwasqroua',
-      'rixilelhrs',
-      'wolcqlirpc',
-      'screeaumgr',
-      'alxhpburyi',
-      'jalaycalmp',
-      'clojurermt',
-    ]
-    const expectedResults = {
-      clojure: {
-        start: [10, 1],
-        end: [10, 7],
-      },
-      elixir: {
-        start: [5, 6],
-        end: [5, 1],
-      },
-      ecmascript: {
-        start: [1, 10],
-        end: [10, 10],
-      },
-      rust: {
-        start: [5, 9],
-        end: [2, 9],
-      },
-      java: {
-        start: [1, 1],
-        end: [4, 4],
-      },
-    }
-    const wordSearch = new WordSearch(grid)
+//   xtest('should locate words written top left to bottom right', () => {
+//     const grid = [
+//       'jefblpepre',
+//       'camdcimgtc',
+//       'oivokprjsm',
+//       'pbwasqroua',
+//       'rixilelhrs',
+//       'wolcqlirpc',
+//       'screeaumgr',
+//       'alxhpburyi',
+//       'jalaycalmp',
+//       'clojurermt',
+//     ]
+//     const expectedResults = {
+//       clojure: {
+//         start: [10, 1],
+//         end: [10, 7],
+//       },
+//       elixir: {
+//         start: [5, 6],
+//         end: [5, 1],
+//       },
+//       ecmascript: {
+//         start: [1, 10],
+//         end: [10, 10],
+//       },
+//       rust: {
+//         start: [5, 9],
+//         end: [2, 9],
+//       },
+//       java: {
+//         start: [1, 1],
+//         end: [4, 4],
+//       },
+//     }
+//     const wordSearch = new WordSearch(grid)
 
-    expect(
-      wordSearch.find(['clojure', 'elixir', 'ecmascript', 'rust', 'java'])
-    ).toEqual(expectedResults)
-  })
-  xtest('should locate words written bottom right to top left', () => {
-    const grid = [
-      'jefblpepre',
-      'camdcimgtc',
-      'oivokprjsm',
-      'pbwasqroua',
-      'rixilelhrs',
-      'wolcqlirpc',
-      'screeaumgr',
-      'alxhpburyi',
-      'jalaycalmp',
-      'clojurermt',
-    ]
+//     expect(
+//       wordSearch.find(['clojure', 'elixir', 'ecmascript', 'rust', 'java'])
+//     ).toEqual(expectedResults)
+//   })
+//   xtest('should locate words written bottom right to top left', () => {
+//     const grid = [
+//       'jefblpepre',
+//       'camdcimgtc',
+//       'oivokprjsm',
+//       'pbwasqroua',
+//       'rixilelhrs',
+//       'wolcqlirpc',
+//       'screeaumgr',
+//       'alxhpburyi',
+//       'jalaycalmp',
+//       'clojurermt',
+//     ]
 
-    const expectedResults = {
-      clojure: {
-        start: [10, 1],
-        end: [10, 7],
-      },
-      elixir: {
-        start: [5, 6],
-        end: [5, 1],
-      },
-      ecmascript: {
-        start: [1, 10],
-        end: [10, 10],
-      },
-      rust: {
-        start: [5, 9],
-        end: [2, 9],
-      },
-      java: {
-        start: [1, 1],
-        end: [4, 4],
-      },
-      lua: {
-        start: [9, 8],
-        end: [7, 6],
-      },
-    }
-    const wordSearch = new WordSearch(grid)
+//     const expectedResults = {
+//       clojure: {
+//         start: [10, 1],
+//         end: [10, 7],
+//       },
+//       elixir: {
+//         start: [5, 6],
+//         end: [5, 1],
+//       },
+//       ecmascript: {
+//         start: [1, 10],
+//         end: [10, 10],
+//       },
+//       rust: {
+//         start: [5, 9],
+//         end: [2, 9],
+//       },
+//       java: {
+//         start: [1, 1],
+//         end: [4, 4],
+//       },
+//       lua: {
+//         start: [9, 8],
+//         end: [7, 6],
+//       },
+//     }
+//     const wordSearch = new WordSearch(grid)
 
-    expect(
-      wordSearch.find([
-        'clojure',
-        'elixir',
-        'ecmascript',
-        'rust',
-        'java',
-        'lua',
-      ])
-    ).toEqual(expectedResults)
-  })
-  xtest('should locate words written bottom left to top right', () => {
-    const grid = [
-      'jefblpepre',
-      'camdcimgtc',
-      'oivokprjsm',
-      'pbwasqroua',
-      'rixilelhrs',
-      'wolcqlirpc',
-      'screeaumgr',
-      'alxhpburyi',
-      'jalaycalmp',
-      'clojurermt',
-    ]
-    const expectedResults = {
-      clojure: {
-        start: [10, 1],
-        end: [10, 7],
-      },
-      elixir: {
-        start: [5, 6],
-        end: [5, 1],
-      },
-      ecmascript: {
-        start: [1, 10],
-        end: [10, 10],
-      },
-      rust: {
-        start: [5, 9],
-        end: [2, 9],
-      },
-      java: {
-        start: [1, 1],
-        end: [4, 4],
-      },
-      lua: {
-        start: [9, 8],
-        end: [7, 6],
-      },
-      lisp: {
-        start: [6, 3],
-        end: [3, 6],
-      },
-    }
+//     expect(
+//       wordSearch.find([
+//         'clojure',
+//         'elixir',
+//         'ecmascript',
+//         'rust',
+//         'java',
+//         'lua',
+//       ])
+//     ).toEqual(expectedResults)
+//   })
+//   xtest('should locate words written bottom left to top right', () => {
+//     const grid = [
+//       'jefblpepre',
+//       'camdcimgtc',
+//       'oivokprjsm',
+//       'pbwasqroua',
+//       'rixilelhrs',
+//       'wolcqlirpc',
+//       'screeaumgr',
+//       'alxhpburyi',
+//       'jalaycalmp',
+//       'clojurermt',
+//     ]
+//     const expectedResults = {
+//       clojure: {
+//         start: [10, 1],
+//         end: [10, 7],
+//       },
+//       elixir: {
+//         start: [5, 6],
+//         end: [5, 1],
+//       },
+//       ecmascript: {
+//         start: [1, 10],
+//         end: [10, 10],
+//       },
+//       rust: {
+//         start: [5, 9],
+//         end: [2, 9],
+//       },
+//       java: {
+//         start: [1, 1],
+//         end: [4, 4],
+//       },
+//       lua: {
+//         start: [9, 8],
+//         end: [7, 6],
+//       },
+//       lisp: {
+//         start: [6, 3],
+//         end: [3, 6],
+//       },
+//     }
 
-    const wordSearch = new WordSearch(grid)
+//     const wordSearch = new WordSearch(grid)
 
-    expect(
-      wordSearch.find([
-        'clojure',
-        'elixir',
-        'ecmascript',
-        'rust',
-        'java',
-        'lua',
-        'lisp',
-      ])
-    ).toEqual(expectedResults)
-  })
-  xtest('should locate words written top right to bottom left', () => {
-    const grid = [
-      'jefblpepre',
-      'camdcimgtc',
-      'oivokprjsm',
-      'pbwasqroua',
-      'rixilelhrs',
-      'wolcqlirpc',
-      'screeaumgr',
-      'alxhpburyi',
-      'jalaycalmp',
-      'clojurermt',
-    ]
+//     expect(
+//       wordSearch.find([
+//         'clojure',
+//         'elixir',
+//         'ecmascript',
+//         'rust',
+//         'java',
+//         'lua',
+//         'lisp',
+//       ])
+//     ).toEqual(expectedResults)
+//   })
+//   xtest('should locate words written top right to bottom left', () => {
+//     const grid = [
+//       'jefblpepre',
+//       'camdcimgtc',
+//       'oivokprjsm',
+//       'pbwasqroua',
+//       'rixilelhrs',
+//       'wolcqlirpc',
+//       'screeaumgr',
+//       'alxhpburyi',
+//       'jalaycalmp',
+//       'clojurermt',
+//     ]
 
-    const expectedResults = {
-      clojure: {
-        start: [10, 1],
-        end: [10, 7],
-      },
-      elixir: {
-        start: [5, 6],
-        end: [5, 1],
-      },
-      ecmascript: {
-        start: [1, 10],
-        end: [10, 10],
-      },
-      rust: {
-        start: [5, 9],
-        end: [2, 9],
-      },
-      java: {
-        start: [1, 1],
-        end: [4, 4],
-      },
-      lua: {
-        start: [9, 8],
-        end: [7, 6],
-      },
-      lisp: {
-        start: [6, 3],
-        end: [3, 6],
-      },
-      ruby: {
-        start: [6, 8],
-        end: [9, 5],
-      },
-    }
-    const wordSearch = new WordSearch(grid)
+//     const expectedResults = {
+//       clojure: {
+//         start: [10, 1],
+//         end: [10, 7],
+//       },
+//       elixir: {
+//         start: [5, 6],
+//         end: [5, 1],
+//       },
+//       ecmascript: {
+//         start: [1, 10],
+//         end: [10, 10],
+//       },
+//       rust: {
+//         start: [5, 9],
+//         end: [2, 9],
+//       },
+//       java: {
+//         start: [1, 1],
+//         end: [4, 4],
+//       },
+//       lua: {
+//         start: [9, 8],
+//         end: [7, 6],
+//       },
+//       lisp: {
+//         start: [6, 3],
+//         end: [3, 6],
+//       },
+//       ruby: {
+//         start: [6, 8],
+//         end: [9, 5],
+//       },
+//     }
+//     const wordSearch = new WordSearch(grid)
 
-    expect(
-      wordSearch.find([
-        'clojure',
-        'elixir',
-        'ecmascript',
-        'rust',
-        'java',
-        'lua',
-        'lisp',
-        'ruby',
-      ])
-    ).toEqual(expectedResults)
-  })
+//     expect(
+//       wordSearch.find([
+//         'clojure',
+//         'elixir',
+//         'ecmascript',
+//         'rust',
+//         'java',
+//         'lua',
+//         'lisp',
+//         'ruby',
+//       ])
+//     ).toEqual(expectedResults)
+//   })
 })
