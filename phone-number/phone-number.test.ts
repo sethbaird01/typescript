@@ -6,47 +6,47 @@ describe('PhoneNumber()', () => {
     expect(phone.number()).toEqual('2234567890')
   })
 
-  xit('cleans numbers with dots', () => {
+  it('cleans numbers with dots', () => {
     const phone = new PhoneNumber('223.456.7890')
     expect(phone.number()).toEqual('2234567890')
   })
 
-  xit('cleans numbers with multiple spaces', () => {
+  it('cleans numbers with multiple spaces', () => {
     const phone = new PhoneNumber('223 456   7890   ')
     expect(phone.number()).toEqual('2234567890')
   })
 
-  xit('invalid when 9 digits', () => {
+  it('invalid when 9 digits', () => {
     const phone = new PhoneNumber('123456789')
     expect(phone.number()).toEqual(undefined)
   })
 
-  xit('invalid when 11 digits', () => {
+  it('invalid when 11 digits', () => {
     const phone = new PhoneNumber('21234567890')
     expect(phone.number()).toEqual(undefined)
   })
 
-  xit('valid when 11 digits and starting with 1', () => {
+  it('valid when 11 digits and starting with 1', () => {
     const phone = new PhoneNumber('12234567890')
     expect(phone.number()).toEqual('2234567890')
   })
 
-  xit('invalid when 12 digits', () => {
+  it('invalid when 12 digits', () => {
     const phone = new PhoneNumber('321234567890')
     expect(phone.number()).toEqual(undefined)
   })
 
-  xit('invalid with letters', () => {
+  it('invalid with letters', () => {
     const phone = new PhoneNumber('123-abc-7890')
     expect(phone.number()).toEqual(undefined)
   })
 
-  xit('invalid with punctuations', () => {
+  it('invalid with punctuations', () => {
     const phone = new PhoneNumber('123-@:!-7890')
     expect(phone.number()).toEqual(undefined)
   })
 
-  xit('invalid with right number of digits but letters mixed in', () => {
+  it('invalid with right number of digits but letters mixed in', () => {
     const phone = new PhoneNumber('1a2b3c4d5e6f7g8h9i0j')
     expect(phone.number()).toEqual(undefined)
   })
