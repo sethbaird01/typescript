@@ -5,23 +5,23 @@ describe('Acronym are produced from', () => {
     expect(Acronym.parse('Portable Network Graphics')).toEqual('PNG')
   })
 
-  xit('other title cased phrases', () => {
+  it('other title cased phrases', () => {
     expect(Acronym.parse('Ruby on Rails')).toEqual('ROR')
   })
 
-  xit('inconsistently cased phrases', () => {
+  it('inconsistently cased phrases', () => {
     expect(Acronym.parse('HyperText Markup Language')).toEqual('HTML')
   })
 
-  xit('phrases with punctuation', () => {
+  it('phrases with punctuation', () => {
     expect(Acronym.parse('First In, First Out')).toEqual('FIFO')
   })
 
-  xit('other phrases with punctuation', () => {
+  it('other phrases with punctuation', () => {
     expect(Acronym.parse('PHP: Hypertext Preprocessor')).toEqual('PHP')
   })
 
-  xit('phrases with punctuation and sentence casing', () => {
+  it('phrases with punctuation and sentence casing', () => {
     expect(Acronym.parse('Complementary metal-oxide semiconductor')).toEqual(
       'CMOS'
     )
